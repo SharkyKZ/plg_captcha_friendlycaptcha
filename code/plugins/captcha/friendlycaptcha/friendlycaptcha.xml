@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="captcha" method="upgrade">
+	<name>plg_captcha_friendlycaptcha</name>
+	<author>SharkyKZ</author>
+	<creationDate>2021-10-02</creationDate>
+	<copyright>(C) 2021 SharkyKZ</copyright>
+	<license>GPL-2.0-or-later</license>
+	<version>1.0.0</version>
+	<description>PLG_CAPTCHA_FRIENDLYCAPTCHA_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="friendlycaptcha">friendlycaptcha.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="siteKey"
+					type="text"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_SITE_KEY_LABEL"
+				/>
+				<field
+					name="secret"
+					type="text"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_SECRET_LABEL"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+	<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="Captcha - Friendly Captcha">https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/updates.xml</server>
+	</updateservers>
+</extension>
