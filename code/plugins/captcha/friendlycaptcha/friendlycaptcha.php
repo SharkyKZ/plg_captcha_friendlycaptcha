@@ -6,6 +6,7 @@
 
 defined('_JEXEC') or exit;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Http\HttpFactory;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
@@ -202,24 +203,51 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 *
 	 * @param   string|null  $id  The id of the field.
 	 *
-	 * @return  bool
+	 * @return  void
 	 *
 	 * @since   1.0.0
 	 * @throws  \RuntimeException
 	 */
 	public function onInit($id = null)
 	{
-		$document = $this->app->getDocument();
+		if ($this->params->get('useCdn'))
+		{
+			if ($this->params->get('cdn') === 'jsdelivr')
+			{
+				$baseUrl = 'https://cdn.jsdelivr.net/npm/friendly-challenge@';
+			}
+			else
+			{
+				$baseUrl = 'https://unpkg.com/friendly-challenge@';
+			}
 
-		$document->addScript(
-			'https://unpkg.com/friendly-challenge@' . self::CHALLENGE_VERSION . '/widget.module.min.js',
-			array(),
+			$document = $this->app->getDocument();
+
+			$document->addScript(
+				$baseUrl . self::CHALLENGE_VERSION . '/widget.module.min.js',
+				array(),
+				array('type' => 'module', 'async' => true, 'defer' => true)
+			);
+
+			$document->addScript(
+				$baseUrl . self::CHALLENGE_VERSION . '/widget.min.js',
+				array(),
+				array('nomodule' => 'true', 'async' => true, 'defer' => true)
+			);
+
+			return;
+		}
+
+		HTMLHelper::_(
+			'script',
+			'plg_captcha_friendlycaptcha/widget.module.min.js',
+			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
 			array('type' => 'module', 'async' => true, 'defer' => true)
 		);
-
-		$document->addScript(
-			'https://unpkg.com/friendly-challenge@' . self::CHALLENGE_VERSION . '/widget.min.js',
-			array(),
+		HTMLHelper::_(
+			'script',
+			'plg_captcha_friendlycaptcha/widget.min.js',
+			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
 			array('nomodule' => 'true', 'async' => true, 'defer' => true)
 		);
 	}

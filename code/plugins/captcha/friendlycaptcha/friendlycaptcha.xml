@@ -11,6 +11,9 @@
 		<filename plugin="friendlycaptcha">friendlycaptcha.php</filename>
 		<folder>tmpl</folder>
 	</files>
+	<media folder="media" destination="plg_captcha_friendlycaptcha">
+		<folder>js</folder>
+	</media>
 	<languages>
 		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.ini</language>
 		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.sys.ini</language>
@@ -28,6 +31,31 @@
 					type="text"
 					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_SECRET_LABEL"
 				/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="useCdn"
+					type="radio"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_USE_CDN_LABEL"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="uint"
+					validate="options"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="cdn"
+					type="list"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_CDN_LABEL"
+					default="jsdelivr"
+					validate="options"
+					showon="useCdn:1"
+					>
+					<option value="jsdelivr">jsDelivr</option>
+					<option value="unpkg">UNPKG</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>
