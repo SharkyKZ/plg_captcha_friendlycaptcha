@@ -3,27 +3,16 @@
 
 define('PATH_ROOT', str_replace('\\', '/', dirname(__DIR__)));
 
-$mediaPath = PATH_ROOT . '/code/media/plg_captcha_friendlycaptcha/js';
-$mediaFiles = [
-	'widget.js',
-	'widget.min.js',
-	'widget.module.js',
-	'widget.module.min.js',
-	'widget.polyfilled.min.js',
-];
+$manifest = simplexml_load_file(PATH_ROOT . '/code/plugins/captcha/friendlycaptcha/friendlycaptcha.xml');
+$version = (string) $manifest->children()->version;
 
-if (!is_dir($mediaPath))
+if(!is_dir(__DIR__ . '/zips'))
 {
-	mkdir($mediaPath, 0755, true);
-}
-
-foreach ($mediaFiles as $file)
-{
-	copy('node_modules/friendly-challenge/' . $file, $mediaPath . '/' . $file);
+	mkdir(__DIR__ . '/zips', 0755);
 }
 
 $zip = new ZipArchive;
-$zip->open(PATH_ROOT .'/plg_captcha_friendlycaptcha-1.0.0.zip', ZipArchive::CREATE);
+$zip->open(__DIR__ . '/zips/plg_captcha_friendlycaptcha-' . $version . '.zip', ZipArchive::CREATE);
 $directories = [PATH_ROOT . '/code/plugins/captcha/friendlycaptcha', PATH_ROOT . '/code/media/plg_captcha_friendlycaptcha'];
 
 foreach ($directories as $directory)

@@ -31,6 +31,16 @@
 					type="text"
 					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_SECRET_LABEL"
 				/>
+				<field
+					name="theme"
+					type="list"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_LABEL"
+					default=""
+					validate="options"
+					>
+					<option value="">JDEFAULT</option>
+					<option value="dark">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_OPTION_DARK</option>
+				</field>
 			</fieldset>
 			<fieldset name="advanced">
 				<field

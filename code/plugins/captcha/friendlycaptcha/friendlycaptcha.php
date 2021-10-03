@@ -164,7 +164,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 
 		$attributes = array(
 			'data-sitekey' => $this->params->get('siteKey'),
-			'class' => rtrim('frc-captcha ' . $class),
+			'class' => rtrim('frc-captcha ' . $this->params->get('theme') . ' ' . $class),
 		);
 
 		if ($id !== null && $id !== '')
