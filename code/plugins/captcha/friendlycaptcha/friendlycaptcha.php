@@ -41,7 +41,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    array
 	 * @since  1.0.0
 	 */
-	private $errorCodes = array(
+	private static $errorCodes = array(
 		'secret_missing',
 		'secret_invalid',
 		'solution_missing',
@@ -56,7 +56,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    array
 	 * @since  1.0.0
 	 */
-	private $languages = array(
+	private static $languages = array(
 		'en',
 		'fr',
 		'de',
@@ -130,7 +130,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				$this->loadLanguage();
 				$language = $this->app->getLanguage();
 
-				$errors = array_intersect($body->errors, $this->errorCodes);
+				$errors = array_intersect($body->errors, self::$errorCodes);
 				$errorText = array();
 
 				foreach ($errors as $error)
@@ -199,7 +199,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				}
 			);
 
-			if ($matchedLanguages = array_intersect($locales, $this->languages))
+			if ($matchedLanguages = array_intersect($locales, self::$languages))
 			{
 				$attributes['data-lang'] = reset($matchedLanguages);
 			}
