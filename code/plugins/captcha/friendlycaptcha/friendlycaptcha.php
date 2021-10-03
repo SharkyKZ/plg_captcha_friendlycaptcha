@@ -130,15 +130,10 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				$this->loadLanguage();
 				$language = $this->app->getLanguage();
 
-				$errors = array_intersect($body->errors, self::$errorCodes);
-				$errorText = array();
-
-				foreach ($errors as $error)
+				if ($errors = array_intersect($body->errors, self::$errorCodes))
 				{
-					$errorText[] = $language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper($error));
+					throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper(reset($errors))));
 				}
-
-				throw new RuntimeException(implode("\n", $errorText));
 			}
 
 			return false;
