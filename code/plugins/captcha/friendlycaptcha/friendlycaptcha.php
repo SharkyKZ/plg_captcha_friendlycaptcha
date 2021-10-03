@@ -192,13 +192,6 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		// Use script's built-in language if available.
 		if ($locales = $language->getLocale())
 		{
-			$locales = array_filter($locales,
-				function($v)
-				{
-					return strlen($v) === 2;
-				}
-			);
-
 			if ($matchedLanguages = array_intersect($locales, self::$languages))
 			{
 				$attributes['data-lang'] = reset($matchedLanguages);
