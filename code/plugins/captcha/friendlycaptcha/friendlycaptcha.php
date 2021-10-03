@@ -70,7 +70,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	);
 
 	/**
-	 * Calls an HTTP POST function to verify if the user's guess was correct.
+	 * Makes HTTP request to remote service to verify user's answer.
 	 *
 	 * @param   string|null  $code  Answer provided by user.
 	 *
@@ -209,7 +209,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 *
 	 * @param   string|null  $id  The id of the field.
 	 *
-	 * @return  void
+	 * @return  bool
 	 *
 	 * @since   1.0.0
 	 * @throws  \RuntimeException
@@ -241,7 +241,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				array('nomodule' => 'true', 'async' => true, 'defer' => true)
 			);
 
-			return;
+			return true;
 		}
 
 		HTMLHelper::_(
@@ -256,5 +256,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
 			array('nomodule' => 'true', 'async' => true, 'defer' => true)
 		);
+
+		return true;
 	}
 }
