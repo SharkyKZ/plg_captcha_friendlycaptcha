@@ -105,7 +105,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		try
 		{
 			$response = $http->post(
-				'https://friendlycaptcha.com/api/v1/siteverify',
+				'https://api.friendlycaptcha.com/api/v1/siteverify',
 				array(
 					'solution' => $code,
 					'secret' => $this->params->get('secret'),
