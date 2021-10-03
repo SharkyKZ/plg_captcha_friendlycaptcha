@@ -93,8 +93,13 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		}
 		catch (\RuntimeException $exception)
 		{
+			if (JDEBUG)
+			{
+				throw $exception;
+			}
+
 			// No HTTP transports supported.
-			return true;
+			return !$this->params->get('strictMode');
 		}
 
 		try
@@ -108,10 +113,15 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				)
 			);
 		}
-		catch (\Exception $exception)
+		catch (\RuntimeException $exception)
 		{
+			if (JDEBUG)
+			{
+				throw $exception;
+			}
+
 			// Connection or transport error.
-			return true;
+			return !$this->params->get('strictMode');
 		}
 
 		$body = json_decode($response->body);
@@ -119,7 +129,12 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		// Remote service error.
 		if ($body === null)
 		{
-			return true;
+			if (JDEBUG)
+			{
+				throw new RuntimeException('Invalid response from Captcha service.');
+			}
+
+			return !$this->params->get('strictMode');
 		}
 
 		if (isset($body->success) && $body->success !== true)
