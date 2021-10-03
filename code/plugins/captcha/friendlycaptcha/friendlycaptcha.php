@@ -177,6 +177,16 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			$attributes['data-solution-field-name'] = $name;
 		}
 
+		if ($this->params->get('euEndpoint'))
+		{
+			$attributes['data-puzzle-endpoint'] = 'https://eu-api.friendlycaptcha.eu/api/v1/puzzle';
+
+			if ($this->params->get('euEndpointFallback'))
+			{
+				$attributes['data-puzzle-endpoint'] .= ',https://api.friendlycaptcha.com/api/v1/puzzle';
+			}
+		}
+
 		$language = $this->app->getLanguage();
 
 		// Use script's built-in language if available.

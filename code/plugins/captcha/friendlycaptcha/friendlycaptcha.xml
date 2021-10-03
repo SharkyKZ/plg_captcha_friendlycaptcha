@@ -79,6 +79,32 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+				<field
+					name="euEndpoint"
+					type="radio"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_EU_ENDPOINT_LABEL"
+					description="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_EU_ENDPOINT_DESCRIPTION"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="uint"
+					validate="options"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="euEndpointFallback"
+					type="radio"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_EU_ENDPOINT_FALLBACK_LABEL"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="uint"
+					validate="options"
+					showon="euEndpoint:1"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>
