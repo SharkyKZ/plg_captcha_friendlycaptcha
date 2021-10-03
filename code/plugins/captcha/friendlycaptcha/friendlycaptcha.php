@@ -216,6 +216,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 */
 	public function onInit($id = null)
 	{
+		$legacyFilename = $this->params->get('polyfill') ? 'widget.polyfilled.min.js' : 'widget.min.js';
+
 		if ($this->params->get('useCdn'))
 		{
 			if ($this->params->get('cdn') === 'jsdelivr')
@@ -236,7 +238,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			);
 
 			$document->addScript(
-				$baseUrl . self::CHALLENGE_VERSION . '/widget.min.js',
+				$baseUrl . self::CHALLENGE_VERSION . '/' . $legacyFilename,
 				array(),
 				array('nomodule' => 'true', 'async' => true, 'defer' => true)
 			);
@@ -252,7 +254,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		);
 		HTMLHelper::_(
 			'script',
-			'plg_captcha_friendlycaptcha/widget.min.js',
+			'plg_captcha_friendlycaptcha/' . $legacyFilename,
 			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
 			array('nomodule' => 'true', 'async' => true, 'defer' => true)
 		);

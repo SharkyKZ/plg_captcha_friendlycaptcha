@@ -66,6 +66,19 @@
 					<option value="jsdelivr">jsDelivr</option>
 					<option value="unpkg">UNPKG</option>
 				</field>
+				<field
+					name="polyfill"
+					type="radio"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_POLYFILL_LABEL"
+					description="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_POLYFILL_DESCRIPTION"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="uint"
+					validate="options"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>
