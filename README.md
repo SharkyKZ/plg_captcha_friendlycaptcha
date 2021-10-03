@@ -6,3 +6,4 @@ Register at https://friendlycaptcha.com to get your site and secret keys.
 - CDN support
 - Option to load polyfills for older browsers
 - Supports 11 built-in languages (English, French, German, Italian, Dutch, Portuguese, Spanish, Catalan, Danish and Japanese)
+- Supports Dedicated EU Endpoint (requires Friendly Captcha Business or Enterprise plan) with global endpoint as fallback
