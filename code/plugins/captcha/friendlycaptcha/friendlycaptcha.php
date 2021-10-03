@@ -10,6 +10,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Http\HttpFactory;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Friendly Captcha plugin.
@@ -69,7 +70,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	);
 
 	/**
-	 * Calls an HTTP POST function to verify if the user's guess was correct
+	 * Calls an HTTP POST function to verify if the user's guess was correct.
 	 *
 	 * @param   string|null  $code  Answer provided by user.
 	 *
@@ -161,11 +162,21 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	{
 		$this->loadLanguage();
 
-		$dom = new DOMDocument('1.0', 'UTF-8');
-		$element = $dom->createElement('div');
-		$element->setAttribute('id', $id);
-		$element->setAttribute('data-sitekey', $this->params->get('siteKey'));
-		$element->setAttribute('class', rtrim('frc-captcha ' . $class));
+		$attributes = array(
+			'data-sitekey' => $this->params->get('siteKey'),
+			'class' => rtrim('frc-captcha ' . $class),
+		);
+
+		if ($id !== null && $id !== '')
+		{
+			$attributes['id'] = $id;
+		}
+
+		if ($name !== null && $name !== '')
+		{
+			$attributes['data-solution-field-name'] = $name;
+		}
+
 		$language = $this->app->getLanguage();
 
 		// Use script's built-in language if available.
@@ -180,17 +191,12 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 
 			if ($matchedLanguages = array_intersect($locales, $this->languages))
 			{
-				$element->setAttribute('data-lang', reset($matchedLanguages));
+				$attributes['data-lang'] = reset($matchedLanguages);
 			}
 		}
 
-		if ($name !== null)
-		{
-			$element->setAttribute('data-solution-field-name', $name);
-		}
+		$html = '<div ' . ArrayHelper::toString($attributes) . '></div>';
 
-		$dom->appendChild($element);
-		$html = $dom->saveHTML($element);
 		ob_start();
 		include PluginHelper::getLayoutPath($this->_type, $this->_name, 'noscript');
 		$html .= ob_get_clean();
