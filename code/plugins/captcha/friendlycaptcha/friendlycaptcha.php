@@ -51,7 +51,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	);
 
 	/**
-	 * Supported languages.
+	 * Supported script's built-in languages.
 	 *
 	 * @var    array
 	 * @since  1.0.0
@@ -205,7 +205,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	}
 
 	/**
-	 * Initialises the captcha
+	 * Initialises the captcha.
 	 *
 	 * @param   string|null  $id  The id of the field.
 	 *
