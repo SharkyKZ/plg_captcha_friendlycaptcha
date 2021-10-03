@@ -9,6 +9,7 @@
 	<description>PLG_CAPTCHA_FRIENDLYCAPTCHA_XML_DESCRIPTION</description>
 	<files>
 		<filename plugin="friendlycaptcha">friendlycaptcha.php</filename>
+		<filename>install.script.php</filename>
 		<folder>tmpl</folder>
 	</files>
 	<media folder="media" destination="plg_captcha_friendlycaptcha">
@@ -18,6 +19,7 @@
 		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.ini</language>
 		<language tag="en-GB">language/en-GB/en-GB.plg_captcha_friendlycaptcha.sys.ini</language>
 	</languages>
+	<scriptfile>install.script.php</scriptfile>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
