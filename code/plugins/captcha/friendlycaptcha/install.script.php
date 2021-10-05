@@ -6,11 +6,12 @@
 
 defined('_JEXEC') or exit;
 
-use Joomla\CMS\Version;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
+
 /**
  * Plugin installer script.
  */
-
 final class PlgCaptchaFriendlyCaptchaInstallerScript
 {
 	/**
@@ -18,6 +19,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 */
 	const PHP_MINIMUM = '5.3.10';
 
@@ -26,6 +29,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 */
 	const PHP_MAXIMUM_MINOR = '8.0';
 
@@ -34,6 +39,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 */
 	const JOOMLA_MINIMUM = '3.8';
 
@@ -42,8 +49,42 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 */
 	const JOOMLA_MAXIMUM_MINOR = '4.0';
+
+	/**
+	 * Minimum supported Joomla! version.
+	 *
+	 * @var    string
+	 * @since  1.1.0
+	 */
+	private $joomlaMinimum = '3.8';
+
+	/**
+	 * Next unsupported Joomla! version.
+	 *
+	 * @var    string
+	 * @since  1.1.0
+	 */
+	private $joomlaUnsupported = '5.0';
+
+	/**
+	 * Minimum supported PHP version.
+	 *
+	 * @var    string
+	 * @since  1.1.0
+	 */
+	private $phpMinimum = '5.3.10';
+
+	/**
+	 * Next unsupported PHP version.
+	 *
+	 * @var    string
+	 * @since  1.1.0
+	 */
+	private $phpUnsupported = '8.1';
 
 	/**
 	 * Function called before extension installation/update/removal procedure commences
@@ -57,23 +98,27 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 */
 	public function preflight($type, $parent)
 	{
-		if (version_compare(PHP_VERSION, self::PHP_MINIMUM, '<'))
+		if (version_compare(JVERSION, $this->joomlaMinimum, '<'))
 		{
 			return false;
 		}
 
-		if (version_compare(PHP_MINOR_VERSION, self::PHP_MAXIMUM_MINOR, '>'))
+		if (version_compare(JVERSION, $this->joomlaUnsupported, '>='))
 		{
 			return false;
 		}
 
-		if (version_compare(JVERSION, self::JOOMLA_MINIMUM, '<'))
+		if (version_compare(PHP_VERSION, $this->phpMinimum, '<'))
 		{
+			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_MINIMUM', $this->phpMinimum), Log::WARNING, 'jerror');
+
 			return false;
 		}
 
-		if (version_compare(Version::MAJOR_VERSION . '.' . Version::MINOR_VERSION, self::JOOMLA_MAXIMUM_MINOR, '>'))
+		if (version_compare(PHP_VERSION, $this->phpUnsupported, '>='))
 		{
+			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_UNSUPPORTED', $this->phpUnsupported), Log::WARNING, 'jerror');
+
 			return false;
 		}
 
