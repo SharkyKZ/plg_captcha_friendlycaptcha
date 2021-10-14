@@ -20,7 +20,6 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
-	 * @deprecated  2.0.0
 	 */
 	const PHP_MINIMUM = '5.3.10';
 
@@ -30,7 +29,6 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
-	 * @deprecated  2.0.0
 	 */
 	const PHP_MAXIMUM_MINOR = '8.0';
 
@@ -40,7 +38,6 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
-	 * @deprecated  2.0.0
 	 */
 	const JOOMLA_MINIMUM = '3.8';
 
@@ -50,7 +47,6 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
-	 * @deprecated  2.0.0
 	 */
 	const JOOMLA_MAXIMUM_MINOR = '4.0';
 
@@ -58,7 +54,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * Minimum supported Joomla! version.
 	 *
 	 * @var    string
-	 * @since  1.1.0
+	 * @since  1.0.1
 	 */
 	private $joomlaMinimum = '3.8';
 
@@ -66,7 +62,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * Next unsupported Joomla! version.
 	 *
 	 * @var    string
-	 * @since  1.1.0
+	 * @since  1.0.1
 	 */
 	private $joomlaUnsupported = '5.0';
 
@@ -74,7 +70,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * Minimum supported PHP version.
 	 *
 	 * @var    string
-	 * @since  1.1.0
+	 * @since  1.0.1
 	 */
 	private $phpMinimum = '5.3.10';
 
@@ -82,7 +78,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * Next unsupported PHP version.
 	 *
 	 * @var    string
-	 * @since  1.1.0
+	 * @since  1.0.1
 	 */
 	private $phpUnsupported = '8.1';
 
