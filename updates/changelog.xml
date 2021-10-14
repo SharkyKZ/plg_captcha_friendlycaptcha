@@ -8,4 +8,15 @@
 			<item>Initial release</item>
 		</note>
 	</changelog>
+		<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.0.1</version>
+		<change>
+			<item>Updated API endpoint URL</item>
+		</change>
+		<fix>
+			<item>Fixed uninstall on Joomla! 4.0+ and unsupported PHP versions</item>
+		</fix>
+	</changelog>
 </changelogs>

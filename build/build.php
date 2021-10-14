@@ -12,7 +12,8 @@ if(!is_dir(__DIR__ . '/zips'))
 }
 
 $zip = new ZipArchive;
-$zip->open(__DIR__ . '/zips/plg_captcha_friendlycaptcha-' . $version . '.zip', ZipArchive::CREATE);
+$zipFile = __DIR__ . '/zips/plg_captcha_friendlycaptcha-' . $version . '.zip';
+$zip->open($zipFile, ZipArchive::CREATE);
 $directories = [PATH_ROOT . '/code/plugins/captcha/friendlycaptcha', PATH_ROOT . '/code/media/plg_captcha_friendlycaptcha'];
 
 foreach ($directories as $directory)
@@ -33,3 +34,12 @@ foreach ($directories as $directory)
 }
 
 $zip->close();
+
+$hashes = '';
+
+foreach (array_intersect(['sha512', 'sha384', 'sha256'], hash_algos()) as $algo)
+{
+	$hashes .= '<' . $algo . '>' . hash_file($algo, $zipFile) . '</' . $algo . ">\n";
+}
+
+file_put_contents(__DIR__ . '/zips/hashes.xml', $hashes);
