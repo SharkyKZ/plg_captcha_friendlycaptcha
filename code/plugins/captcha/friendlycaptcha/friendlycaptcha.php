@@ -247,13 +247,13 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/widget.module.min.js',
 				array(),
-				array('type' => 'module', 'async' => true, 'defer' => true)
+				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous')
 			);
 
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/' . $legacyFilename,
 				array(),
-				array('nomodule' => 'true', 'async' => true, 'defer' => true)
+				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous')
 			);
 
 			return true;
