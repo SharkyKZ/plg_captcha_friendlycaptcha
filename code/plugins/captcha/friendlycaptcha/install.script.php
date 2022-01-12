@@ -20,6 +20,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
+	 * @deprecated  2.0.0  Visibility will be changed to private.
+	 *
 	 */
 	const PHP_MINIMUM = '5.3.10';
 
@@ -28,6 +30,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 *
 	 */
 	const PHP_MAXIMUM_MINOR = '8.0';
@@ -38,6 +42,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
+	 * @deprecated  2.0.0  Visibility will be changed to private.
+	 *
 	 */
 	const JOOMLA_MINIMUM = '3.8';
 
@@ -46,6 +52,8 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @var    string
 	 * @since  1.0.0
+	 *
+	 * @deprecated  2.0.0
 	 *
 	 */
 	const JOOMLA_MAXIMUM_MINOR = '4.0';
@@ -80,7 +88,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.1
 	 */
-	private $phpUnsupported = '8.1';
+	private $phpUnsupported = '8.2';
 
 	/**
 	 * Function called before extension installation/update/removal procedure commences
