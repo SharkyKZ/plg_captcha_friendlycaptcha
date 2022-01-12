@@ -8,7 +8,7 @@
 			<item>Initial release</item>
 		</note>
 	</changelog>
-		<changelog>
+	<changelog>
 		<element>friendlycaptcha</element>
 		<type>plugin</type>
 		<version>1.0.1</version>
@@ -18,5 +18,16 @@
 		<fix>
 			<item>Fixed uninstall on Joomla! 4.0+ and unsupported PHP versions</item>
 		</fix>
+	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.1.0</version>
+		<security>
+			<item>Added anonymous CORS and SRI hashes for CDNs</item>
+		</security>
+		<change>
+			<item>Declared PHP 8.1 support</item>
+		</change>
 	</changelog>
 </changelogs>
