@@ -70,6 +70,18 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	);
 
 	/**
+	 * Subresource integrity (SRI) hashes.
+	 *
+	 * @var    array
+	 * @since  1.1.0
+	 */
+	private static $sriHashes = array(
+		'module' => 'sha384-zrA4ElvNO0NiTYiqUSnwaHOkGKGOdQG+T3Oy5JLDpZ0x6QqP6691AX6aWLwEpVDP',
+		'legacy' => 'sha384-xlSz4Kn2CUh1IuuqHZest2c5LkVndsuJzATj5zpohLXjvp1iTf6fWQsPzGrWl3tZ',
+		'polyfilled' => 'sha384-yt9csktddfUKZCvk7/j9mXGK/KM/JcAcpDZqWC7E+OR76rivcTbtMj9aCgGrYvbI',
+	);
+
+	/**
 	 * Makes HTTP request to remote service to verify user's answer.
 	 *
 	 * @param   string|null  $code  Answer provided by user.
@@ -230,6 +242,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	public function onInit($id = null)
 	{
 		$legacyFilename = $this->params->get('polyfill') ? 'widget.polyfilled.min.js' : 'widget.min.js';
+		$legacyHash = $this->params->get('polyfill') ? self::$sriHashes['polyfilled'] : self::$sriHashes['legacy'];
 
 		if ($this->params->get('useCdn'))
 		{
@@ -247,13 +260,13 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/widget.module.min.js',
 				array(),
-				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous')
+				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes['module'])
 			);
 
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/' . $legacyFilename,
 				array(),
-				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous')
+				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => $legacyHash)
 			);
 
 			return true;
