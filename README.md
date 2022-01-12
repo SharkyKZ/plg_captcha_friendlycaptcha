@@ -10,7 +10,7 @@ Register at https://friendlycaptcha.com to get your site and secret keys.
 
 ## System Requirements
 - Joomla! 3.8 or higher (4.0 is supported);
-- PHP 5.3.10 or higher (8.0 is supported);
+- PHP 5.3.10 or higher (8.1 is supported);
 - OpenSSL with TLS 1.2 support.
 - One of the following HTTP transports in PHP: cURL, `fsockopen()` or `fopen()` with `allow_url_fopen` optin enabled. 
 
