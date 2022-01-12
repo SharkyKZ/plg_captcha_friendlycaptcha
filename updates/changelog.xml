@@ -22,7 +22,7 @@
 	<changelog>
 		<element>friendlycaptcha</element>
 		<type>plugin</type>
-		<version>1.1.0</version>
+		<version>1.1.1</version>
 		<security>
 			<item>Added anonymous CORS and SRI hashes for CDNs</item>
 		</security>
