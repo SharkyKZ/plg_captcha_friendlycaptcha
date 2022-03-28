@@ -78,9 +78,11 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @since  1.1.0
 	 */
 	private static $sriHashes = array(
-		'module' => 'sha384-w+QeEdeEp/WOlNVE57LGgH/QMDphu/YBJ0jMmN9xXkjlLcQ7xrpHSO7vS1sgDA4x',
-		'legacy' => 'sha384-yqBOvrvDyL32AH5x+tIzoo5I5kWw1r1ff31hAxRtf5igUHdgr6jF4i+Qpq3//T4C',
-		'polyfilled' => 'sha384-fGVJEvKbe66XF4jezl34aFy6WZUfjA+yGHSySAev0ttw4QaCmDcAyBYPurfhLvEJ',
+		'widget.js' => 'uPZMjx4UXN55d/DJwVxJC51OgKYbFVKeme91II1XJkHl5oH1xmD97qghYGyWTYF4',
+		'widget.min.js' => 'yqBOvrvDyL32AH5x+tIzoo5I5kWw1r1ff31hAxRtf5igUHdgr6jF4i+Qpq3//T4C',
+		'widget.module.js' => '4ivaJeMa0JUvD+0we1fKARcGwTMbRsW4VI6OAZNbAkOKG0axwIq5StFlV+9DpGNZ',
+		'widget.module.min.js' => 'w+QeEdeEp/WOlNVE57LGgH/QMDphu/YBJ0jMmN9xXkjlLcQ7xrpHSO7vS1sgDA4x',
+		'widget.polyfilled.min.js' => 'fGVJEvKbe66XF4jezl34aFy6WZUfjA+yGHSySAev0ttw4QaCmDcAyBYPurfhLvEJ',
 	);
 
 	/**
@@ -243,8 +245,14 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 */
 	public function onInit($id = null)
 	{
-		$legacyFilename = $this->params->get('polyfill') ? 'widget.polyfilled.min.js' : 'widget.min.js';
-		$legacyHash = $this->params->get('polyfill') ? self::$sriHashes['polyfilled'] : self::$sriHashes['legacy'];
+		if ($this->params->get('polyfill'))
+		{
+			$legacyFilename = 'widget.polyfilled.min.js';
+		}
+		else
+		{
+			$legacyFilename = JDEBUG ? 'widget.js' : 'widget.min.js';
+		}
 
 		if ($this->params->get('useCdn'))
 		{
@@ -258,17 +266,18 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			}
 
 			$document = $this->app->getDocument();
+			$moduleFilename = JDEBUG ? 'widget.module.js' : 'widget.module.min.js';
 
 			$document->addScript(
-				$baseUrl . self::CHALLENGE_VERSION . '/widget.module.min.js',
+				$baseUrl . self::CHALLENGE_VERSION . '/' . $moduleFilename,
 				array(),
-				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes['module'])
+				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes[$moduleFilename])
 			);
 
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/' . $legacyFilename,
 				array(),
-				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => $legacyHash)
+				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes[$legacyFilename])
 			);
 
 			return true;
