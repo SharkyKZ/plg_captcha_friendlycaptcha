@@ -25,7 +25,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    string
 	 * @since  1.0.0
 	 */
-	const CHALLENGE_VERSION = '0.9.0';
+	const CHALLENGE_VERSION = '0.9.1';
 
 	/**
 	 * Application instance.
@@ -67,6 +67,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'ca',
 		'da',
 		'ja',
+		'sv',
+		'ru',
 	);
 
 	/**
@@ -76,9 +78,9 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @since  1.1.0
 	 */
 	private static $sriHashes = array(
-		'module' => 'sha384-zrA4ElvNO0NiTYiqUSnwaHOkGKGOdQG+T3Oy5JLDpZ0x6QqP6691AX6aWLwEpVDP',
-		'legacy' => 'sha384-xlSz4Kn2CUh1IuuqHZest2c5LkVndsuJzATj5zpohLXjvp1iTf6fWQsPzGrWl3tZ',
-		'polyfilled' => 'sha384-yt9csktddfUKZCvk7/j9mXGK/KM/JcAcpDZqWC7E+OR76rivcTbtMj9aCgGrYvbI',
+		'module' => 'sha384-w+QeEdeEp/WOlNVE57LGgH/QMDphu/YBJ0jMmN9xXkjlLcQ7xrpHSO7vS1sgDA4x',
+		'legacy' => 'sha384-yqBOvrvDyL32AH5x+tIzoo5I5kWw1r1ff31hAxRtf5igUHdgr6jF4i+Qpq3//T4C',
+		'polyfilled' => 'sha384-fGVJEvKbe66XF4jezl34aFy6WZUfjA+yGHSySAev0ttw4QaCmDcAyBYPurfhLvEJ',
 	);
 
 	/**
