@@ -213,15 +213,12 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			}
 		}
 
-		$language = $this->app->getLanguage();
-
 		// Use script's built-in language if available.
-		if ($locales = $language->getLocale())
+		list($languageTag) = explode('-', $this->app->getLanguage()->getTag());
+
+		if (in_array($languageTag, self::$languages, true))
 		{
-			if ($matchedLanguages = array_intersect($locales, self::$languages))
-			{
-				$attributes['data-lang'] = reset($matchedLanguages);
-			}
+			$attributes['data-lang'] = $languageTag;
 		}
 
 		$html = '<div ' . ArrayHelper::toString($attributes) . '></div>';
