@@ -14,6 +14,7 @@
 		</downloads>
 		<maintainer>SharkyKZ</maintainer>
 		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
 		<targetplatform name="joomla" version="(4|3\.([89]|10))" />
 		<php_minimum>5.3.10</php_minimum>
 	</update>
@@ -31,6 +32,7 @@
 		</downloads>
 		<maintainer>SharkyKZ</maintainer>
 		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
 		<targetplatform name="joomla" version="(4|3\.([89]|10))" />
 		<php_minimum>5.3.10</php_minimum>
 		<sha512>fd8504e7eaec6d923f5ed74cebc687714dd384449ccedfeeede43423af90e6f521dbc59bb16f919900a97394a64bab322865b0e96858e96666f1b268bb5d41d7</sha512>
@@ -51,6 +53,7 @@
 		</downloads>
 		<maintainer>SharkyKZ</maintainer>
 		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
 		<targetplatform name="joomla" version="(4|3\.([89]|10))" />
 		<php_minimum>5.3.10</php_minimum>
 		<sha512>0e073931b0112ae61a0a53b2afb976d8ff1846a17f4cb62ae9770130b5eb79f877baef3056aa28912c86a0a9720342e735de4c533d6e714e3f1f7169abd625c6</sha512>
@@ -71,6 +74,7 @@
 		</downloads>
 		<maintainer>SharkyKZ</maintainer>
 		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
 		<targetplatform name="joomla" version="(4|3\.([89]|10))" />
 		<php_minimum>5.3.10</php_minimum>
 		<sha512>2c6ee7dbf9307809aa3e19a6728d591f048be0ac4a0c697aa94be36dac1a59f845162bc09e52942bacd45b42fdf8ff7f8506c2385b56ccac7a18fa5dd9445bea</sha512>
