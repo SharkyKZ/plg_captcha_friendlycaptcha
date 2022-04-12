@@ -57,4 +57,24 @@
 		<sha384>edeeb8cf05b6670e3c4e58426d06109880bdde7869d8b9e49b10dedbb22266d3fbe3b61c5890a798d09a8187dae6c9d5</sha384>
 		<sha256>0cdc6e4684f70a19fd309a51a3d9082cc9a8d1e38db355177ac4e4c934fd6614</sha256>
 	</update>
+	<update>
+		<name>Captcha - Friendly Captcha</name>
+		<description>Friendly Captcha anti-spam plugin.</description>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<folder>captcha</folder>
+		<client>site</client>
+		<version>1.2.0</version>
+		<infourl title="Captcha - Friendly Captcha">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/tag/1.2.0</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/download/1.2.0/plg_captcha_friendlycaptcha-1.2.0.zip</downloadurl>
+		</downloads>
+		<maintainer>SharkyKZ</maintainer>
+		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<targetplatform name="joomla" version="(4|3\.([89]|10))" />
+		<php_minimum>5.3.10</php_minimum>
+		<sha512>2c6ee7dbf9307809aa3e19a6728d591f048be0ac4a0c697aa94be36dac1a59f845162bc09e52942bacd45b42fdf8ff7f8506c2385b56ccac7a18fa5dd9445bea</sha512>
+		<sha384>26d629de5ebeeb5aac4c9c32b66ed18c0280d4d3ec211cbb028909ddf35c909be74894a78c333e7dbdd916f32cc901ce</sha384>
+		<sha256>00b9afcad3a8d079943d721de5d843262ff0b8b3743ce87e59ad8365ea4e36a4</sha256>
+	</update>
 </updates>

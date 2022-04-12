@@ -30,4 +30,19 @@
 			<item>Declared PHP 8.1 support</item>
 		</change>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.2.0</version>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.1</item>
+		</change>
+		<fix>
+			<item>Non-minified scripts are now loaded when debug and CDN are enabled</item>
+			<item>Fixed language detection on some language packs</item>
+		</fix>
+		<addition>
+			<item>Added native Russian and Swedish language support</item>
+		</addition>
+	</changelog>
 </changelogs>
