@@ -19,5 +19,5 @@ if (!is_dir($mediaPath))
 
 foreach ($mediaFiles as $file)
 {
-	copy('node_modules/friendly-challenge/' . $file, $mediaPath . '/' . $file);
+	copy(PATH_ROOT .  '/node_modules/friendly-challenge/' . $file, $mediaPath . '/' . $file);
 }
