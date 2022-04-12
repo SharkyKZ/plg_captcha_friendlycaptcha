@@ -5,14 +5,14 @@ Register at https://friendlycaptcha.com to get your site and secret keys.
 - Standard light and dark themes;
 - CDN support;
 - Option to load polyfills for older browsers;
-- Supports 13 built-in languages (English, French, German, Italian, Dutch, Portuguese, Spanish, Catalan, Danish, Japanese, Swedish, Russian);
+- Supports 12 built-in languages (English, French, German, Italian, Dutch, Portuguese, Spanish, Catalan, Danish, Japanese, Swedish, Russian);
 - Supports Dedicated EU Endpoint (requires Friendly Captcha Business or Enterprise plan) with global endpoint as fallback.
 
 ## System Requirements
 - Joomla! 3.8 or higher (4.1 is supported);
 - PHP 5.3.10 or higher (8.1 is supported);
 - OpenSSL with TLS 1.2 support.
-- One of the following HTTP transports in PHP: cURL, `fsockopen()` or `fopen()` with `allow_url_fopen` option enabled. 
+- One of the following HTTP transports in PHP: cURL, `fsockopen()` or `fopen()` with `allow_url_fopen` option enabled.
 
 ## Troubleshooting
 Q: Captcha doesn't protect from bots.
