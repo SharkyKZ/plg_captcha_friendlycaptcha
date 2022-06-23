@@ -45,4 +45,15 @@
 			<item>Added native Russian and Swedish language support</item>
 		</addition>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.3.0</version>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.4</item>
+		</change>
+		<addition>
+			<item>Added native Turkish language support</item>
+		</addition>
+	</changelog>
 </changelogs>
