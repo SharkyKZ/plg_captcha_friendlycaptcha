@@ -3,13 +3,13 @@
 
 define('PATH_ROOT', str_replace('\\', '/', dirname(__DIR__)));
 
-$manifest = simplexml_load_file(PATH_ROOT . '/code/plugins/captcha/friendlycaptcha/friendlycaptcha.xml');
-$version = (string) $manifest->children()->version;
-
-if(!is_dir(__DIR__ . '/zips'))
+if (!is_dir(__DIR__ . '/zips'))
 {
 	mkdir(__DIR__ . '/zips', 0755);
 }
+
+$manifest = simplexml_load_file(PATH_ROOT . '/code/plugins/captcha/friendlycaptcha/friendlycaptcha.xml');
+$version = (string) $manifest->children()->version;
 
 $zip = new ZipArchive;
 $zipFile = __DIR__ . '/zips/plg_captcha_friendlycaptcha-' . $version . '.zip';
