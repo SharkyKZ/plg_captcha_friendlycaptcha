@@ -56,4 +56,16 @@
 			<item>Added native Turkish language support</item>
 		</addition>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.4.0</version>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.5</item>
+			<item>Declared PHP 8.2 support</item>
+		</change>
+		<addition>
+			<item>Added native Greek, Ukrainian, Bulgarian, Czech, Slovak, Norwegian, Finnish, Latvian, Lithuanian, Polish, Estonian, Croatian, Serbian, Slovenian, Hungarian, Romanian language support</item>
+		</addition>
+	</changelog>
 </changelogs>
