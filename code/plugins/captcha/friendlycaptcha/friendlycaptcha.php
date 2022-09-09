@@ -135,29 +135,56 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			return !$this->params->get('strictMode');
 		}
 
-		try
+		$body = null;
+		$data = array(
+			'solution' => $code,
+			'secret' => $this->params->get('secret'),
+			'sitekey' => $this->params->get('siteKey'),
+		);
+
+		// Try EU endpoint if selected.
+		if ($this->params->get('euEndpoint'))
 		{
-			$response = $http->post(
-				'https://api.friendlycaptcha.com/api/v1/siteverify',
-				array(
-					'solution' => $code,
-					'secret' => $this->params->get('secret'),
-					'sitekey' => $this->params->get('siteKey'),
-				)
-			);
-		}
-		catch (\RuntimeException $exception)
-		{
-			if (JDEBUG)
+			try
 			{
-				throw $exception;
+				$response = $http->post('https://eu-api.friendlycaptcha.eu/api/v1/siteverify', $data);
+				$body = json_decode($response->body);
 			}
+			catch (RuntimeException $exception)
+			{
+				// If fallback endpoint is not used, return early.
+				if (!$this->params->get('euEndpointFallback'))
+				{
+					if (JDEBUG)
+					{
+						throw $exception;
+					}
 
-			// Connection or transport error.
-			return !$this->params->get('strictMode');
+					// Connection or transport error.
+					return !$this->params->get('strictMode');
+				}
+			}
 		}
 
-		$body = json_decode($response->body);
+		// Try global endpoint.
+		if ($body === null)
+		{
+			try
+			{
+				$response = $http->post('https://api.friendlycaptcha.com/api/v1/siteverify', $data);
+				$body = json_decode($response->body);
+			}
+			catch (RuntimeException $exception)
+			{
+				if (JDEBUG)
+				{
+					throw $exception;
+				}
+
+				// Connection or transport error.
+				return !$this->params->get('strictMode');
+			}
+		}
 
 		// Remote service error.
 		if ($body === null)
