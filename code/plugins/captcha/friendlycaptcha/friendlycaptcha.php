@@ -30,7 +30,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	/**
 	 * Application instance.
 	 *
-	 * @var    \Joomla\CMS\Application\CMSApplicationInterface
+	 * @var    Joomla\CMS\Application\CMSApplicationInterface
 	 * @since  1.0.0
 	 */
 	protected $app;
@@ -110,7 +110,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @return  bool
 	 *
 	 * @since   1.0.0
-	 * @throws  \RuntimeException
+	 * @throws  RuntimeException
 	 */
 	public function onCheckAnswer($code = null)
 	{
@@ -124,7 +124,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		{
 			$http = HttpFactory::getHttp();
 		}
-		catch (\RuntimeException $exception)
+		catch (RuntimeException $exception)
 		{
 			if (JDEBUG)
 			{
@@ -282,7 +282,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @return  bool
 	 *
 	 * @since   1.0.0
-	 * @throws  \RuntimeException
+	 * @throws  RuntimeException
 	 */
 	public function onInit($id = null)
 	{
