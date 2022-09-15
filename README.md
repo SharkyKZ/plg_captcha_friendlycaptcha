@@ -5,7 +5,7 @@ Register at https://friendlycaptcha.com to get your site and secret keys.
 - Standard light and dark themes;
 - CDN support;
 - Option to load polyfills for older browsers;
-- Supports multiple built-in languages (English, French, German, Italian, Dutch, Portuguese, Spanish, Catalan, Danish, Japanese, Swedish, Russian, Turkish, Greek, Ukrainian, Bulgarian, Czech, Slovak, Norwegian, Finnish, Latvian, Lithuanian, Polish, Estonian, Croatian, Serbian, Slovenian, Hungarian, Romanian);
+- Supports multiple built-in languages (English, French, German, Italian, Dutch, Portuguese, Spanish, Catalan, Danish, Japanese, Swedish, Russian, Turkish, Greek, Ukrainian, Bulgarian, Czech, Slovak, Norwegian, Finnish, Latvian, Lithuanian, Polish, Estonian, Croatian, Serbian, Slovenian, Hungarian, Romanian, Chinese (Simplified));
 - Supports Dedicated EU Endpoint (requires Friendly Captcha Business or Enterprise plan) with global endpoint as fallback.
 
 ## System Requirements

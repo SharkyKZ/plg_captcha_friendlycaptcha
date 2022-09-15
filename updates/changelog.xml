@@ -68,4 +68,16 @@
 			<item>Added native Greek, Ukrainian, Bulgarian, Czech, Slovak, Norwegian, Finnish, Latvian, Lithuanian, Polish, Estonian, Croatian, Serbian, Slovenian, Hungarian, Romanian language support</item>
 		</addition>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.5.0</version>
+		<change>
+			<item>EU validation endpoint is now used when selected</item>
+			<item>Updated friendly-challenge script to 0.9.6</item>
+		</change>
+		<addition>
+			<item>Added native Chinese (Simplified) language</item>
+		</addition>
+	</changelog>
 </changelogs>
