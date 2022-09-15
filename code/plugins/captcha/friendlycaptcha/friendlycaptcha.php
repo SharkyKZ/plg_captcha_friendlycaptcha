@@ -199,7 +199,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			return !$this->params->get('strictMode');
 		}
 
-		if (isset($body->success) && $body->success !== true)
+		if (!isset($body->success) || $body->success !== true)
 		{
 			// If error codes are pvovided, use them for language strings.
 			if (!empty($body->errors) && is_array($body->errors))
