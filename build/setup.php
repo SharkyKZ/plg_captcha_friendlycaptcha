@@ -27,7 +27,7 @@ $hashes = [];
 foreach ($mediaFiles as $file)
 {
 	copy(PATH_ROOT .  '/node_modules/friendly-challenge/' . $file, $mediaPath . '/' . $file);
-	$hashes[] = base64_encode(hash('sha384', file_get_contents($mediaPath . '/' . $file), true));
+	$hashes[] = $file . ': ' . base64_encode(hash_file('sha384', $mediaPath . '/' . $file, true));
 }
 
 file_put_contents(__DIR__ . '/zips/sri.txt', implode("\n", $hashes));

@@ -4,7 +4,7 @@
  * @license     GPL-2.0-or-later
  */
 
-defined('_JEXEC') or exit;
+defined('_JEXEC') || exit;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Http\HttpFactory;
@@ -25,7 +25,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    string
 	 * @since  1.0.0
 	 */
-	const CHALLENGE_VERSION = '0.9.5';
+	const CHALLENGE_VERSION = '0.9.6';
 
 	/**
 	 * Application instance.
@@ -76,6 +76,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'cs',
 		'sk',
 		'no',
+		'nb',
 		'fi',
 		'lv',
 		'lt',
@@ -86,6 +87,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'sl',
 		'hu',
 		'ro',
+		'zh',
 	);
 
 	/**
@@ -95,11 +97,11 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @since  1.1.0
 	 */
 	private static $sriHashes = array(
-		'widget.js' => 'sha384-yEjZJkNzO3e4Fde4K9uKEldk4jI0m93o+ln+xSLZWvgxkEwT03LmgOrh2Z8FqWQM',
-		'widget.min.js' => 'sha384-pA0dME5FCr6YHTliSXtrc3OEkCZCus/QEGXBFU7CuDiUBQWTsUpKHlkK0xtlxvo0',
-		'widget.module.js' => 'sha384-opY/H5MZLZVFg53wBLwyq/snd9asxw3ZRiac6ES27NF2TZIKubrk5axi8fjMe7nS',
-		'widget.module.min.js' => 'sha384-+kypyfP0fyp3VpuGfySQ5h76l5oXYzVY4wM0VojOye1NrnzQs7aO2vF20G2oC1OC',
-		'widget.polyfilled.min.js' => 'sha384-pPi3naym/FYt41/poaCu1l0vpu8FVJUj89Fa4WSUbWoKTizXDxKcDX3Zl1RxTtuW',
+		'widget.js' => 'sha384-8C8aUHcZt6lHd2MrCKcA7sjaJOxjzvOLM5U52GOoFFFqkNqYGeL7g4QDCTmzw6kD',
+		'widget.min.js' => 'sha384-vahpxq0mK60mIAeMMBP0dsdHUOaGC/3w9nOwrC7jBMH9jXbxwaokNlIqNczyJBcn',
+		'widget.module.js' => 'sha384-KW+QUn7mIHe4MADJGvJHtu/0JfsRihGVuif0MBIa6DIhnKVIBswFBVPLoMpxWPvJ',
+		'widget.module.min.js' => 'sha384-zpnn4iFOEYOf6TLlTcY9ZWt7+VQF8sDQAcO4p4JfXjIgkYWu5fQqBUyoT/E13QHz',
+		'widget.polyfilled.min.js' => 'sha384-A2os9K5m8lRsXThRSzPiqMXs4wXw7vxNlwtPPywSdlq+Veus3BCyWGrNBdoGzhv/',
 	);
 
 	/**
