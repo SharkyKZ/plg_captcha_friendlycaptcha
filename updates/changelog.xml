@@ -91,4 +91,12 @@
 			<item>Fixed XSS vulnerability</item>
 		</security>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.5.2</version>
+		<fix>
+			<item>Fixed PHP 5.3 compatibility</item>
+		</fix>
+	</changelog>
 </changelogs>
