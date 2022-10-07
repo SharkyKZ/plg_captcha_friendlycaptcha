@@ -80,4 +80,15 @@
 			<item>Added native Chinese (Simplified) language</item>
 		</addition>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.5.1</version>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.7</item>
+		</change>
+		<security>
+			<item>Fixed XSS vulnerability</item>
+		</security>
+	</changelog>
 </changelogs>
