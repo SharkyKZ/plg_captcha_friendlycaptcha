@@ -267,6 +267,14 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			$attributes['data-lang'] = $languageTag;
 		}
 
+		$attributes = array_map(
+			static function ($value)
+			{
+				return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+			},
+			$attributes
+		);
+
 		$html = '<div ' . ArrayHelper::toString($attributes) . '></div>';
 
 		ob_start();
