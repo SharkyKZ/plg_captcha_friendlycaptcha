@@ -25,7 +25,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    string
 	 * @since  1.0.0
 	 */
-	const CHALLENGE_VERSION = '0.9.6';
+	const CHALLENGE_VERSION = '0.9.7';
 
 	/**
 	 * Application instance.
@@ -97,11 +97,11 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @since  1.1.0
 	 */
 	private static $sriHashes = array(
-		'widget.js' => 'sha384-8C8aUHcZt6lHd2MrCKcA7sjaJOxjzvOLM5U52GOoFFFqkNqYGeL7g4QDCTmzw6kD',
-		'widget.min.js' => 'sha384-vahpxq0mK60mIAeMMBP0dsdHUOaGC/3w9nOwrC7jBMH9jXbxwaokNlIqNczyJBcn',
-		'widget.module.js' => 'sha384-KW+QUn7mIHe4MADJGvJHtu/0JfsRihGVuif0MBIa6DIhnKVIBswFBVPLoMpxWPvJ',
-		'widget.module.min.js' => 'sha384-zpnn4iFOEYOf6TLlTcY9ZWt7+VQF8sDQAcO4p4JfXjIgkYWu5fQqBUyoT/E13QHz',
-		'widget.polyfilled.min.js' => 'sha384-A2os9K5m8lRsXThRSzPiqMXs4wXw7vxNlwtPPywSdlq+Veus3BCyWGrNBdoGzhv/',
+		'widget.js' => 'sha384-UFL4PhIl8iA1XcJ+8DH11eHGTqSxS7pbhKQTYZf+/kjkN0OtWlw28dkNa2gYgrqQ',
+		'widget.min.js' => 'sha384-//4jn6/SqJRzxl4KNalrKTtlBPiZCaKRX8JI1L0Fiq5CeyTF7LK+C81FYPdRqCpk',
+		'widget.module.js' => 'sha384-nvsyfPa9w9jMiCAnDlonfs+tn+RNCwYne+XhUTZuoWfBy40QaufyK9WQHqhfLliP',
+		'widget.module.min.js' => 'sha384-+AwEQU0QwnIgVl8a2r9D+fjGdFUk7sqbvxCvkpurBAosMGlYc6zvMsQdmej1Y5Ex',
+		'widget.polyfilled.min.js' => 'sha384-oRjhrHeS49c2FqwlWsm1b+qPOH92bZItYgWZEKjhX4IdEX+TIkhn4tVSRtoCxrhE',
 	);
 
 	/**
