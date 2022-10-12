@@ -54,11 +54,24 @@ final class PluginBuildScript
 
 		$zip = new ZipArchive;
 		$zip->open($this->zipFile, ZipArchive::OVERWRITE|ZipArchive::CREATE);
-		$directories = [$this->pluginDirectory, $this->mediaDirectory];
 
-		foreach ($directories as $directory)
+		$iterator = new RecursiveDirectoryIterator($this->pluginDirectory);
+		$iterator2 = new RecursiveIteratorIterator($iterator);
+
+		foreach ($iterator2 as $file)
 		{
-			$iterator = new RecursiveDirectoryIterator($directory);
+			if ($file->isFile())
+			{
+				$zip->addFile(
+					$file->getPathName(),
+					str_replace(['\\', $this->pluginDirectory . '/'], ['/', ''], $file->getPathName())
+				);
+			}
+		}
+
+		if (is_dir($this->mediaDirectory))
+		{
+			$iterator = new RecursiveDirectoryIterator($this->mediaDirectory);
 			$iterator2 = new RecursiveIteratorIterator($iterator);
 
 			foreach ($iterator2 as $file)
@@ -67,7 +80,7 @@ final class PluginBuildScript
 				{
 					$zip->addFile(
 						$file->getPathName(),
-						str_replace(['\\', $this->pluginDirectory . '/', $this->mediaDirectory . '/'], ['/', '', 'media/'], $file->getPathName())
+						str_replace(['\\', $this->mediaDirectory . '/'], ['/', 'media/'], $file->getPathName())
 					);
 				}
 			}
