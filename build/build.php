@@ -73,7 +73,7 @@ final class PluginBuildScript
 			}
 		}
 
-		//$zip->addFile(PATH_ROOT . '/LICENSE', 'LICENSE');
+		$zip->addFile(PATH_ROOT . '/LICENSE', 'LICENSE');
 		$zip->close();
 	}
 
