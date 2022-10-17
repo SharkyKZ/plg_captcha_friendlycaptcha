@@ -43,6 +43,17 @@
 					<option value="">JDEFAULT</option>
 					<option value="dark">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_OPTION_DARK</option>
 				</field>
+				<field
+					name="startMode"
+					type="list"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_LABEL"
+					default=""
+					validate="options"
+					>
+					<option value="none">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_OPTION_NONE</option>
+					<option value="">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_OPTION_FOCUS</option>
+					<option value="auto">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_OPTION_AUTO</option>
+				</field>
 			</fieldset>
 			<fieldset name="advanced">
 				<field

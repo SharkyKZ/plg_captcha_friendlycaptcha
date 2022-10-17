@@ -259,6 +259,11 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			}
 		}
 
+		if (is_string($this->params->get('startMode', null)))
+		{
+			$attributes['data-start'] = $this->params->get('startMode');
+		}
+
 		// Use script's built-in language if available.
 		list($languageTag) = explode('-', $this->app->getLanguage()->getTag());
 
