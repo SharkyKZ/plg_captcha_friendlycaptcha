@@ -193,7 +193,9 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		{
 			if (JDEBUG)
 			{
-				throw new RuntimeException('Invalid response from Captcha service.');
+				$this->loadLanguage();
+
+				throw new RuntimeException($this->app->getLanguage()->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_INVALID_RESPONSE'));
 			}
 
 			return !$this->params->get('strictMode');
@@ -204,12 +206,11 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			// If error codes are pvovided, use them for language strings.
 			if (!empty($body->errors) && is_array($body->errors))
 			{
-				$this->loadLanguage();
-				$language = $this->app->getLanguage();
-
 				if ($errors = array_intersect($body->errors, self::$errorCodes))
 				{
-					throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper(reset($errors))));
+					$this->loadLanguage();
+
+					throw new RuntimeException($this->app->getLanguage()->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper(reset($errors))));
 				}
 			}
 
