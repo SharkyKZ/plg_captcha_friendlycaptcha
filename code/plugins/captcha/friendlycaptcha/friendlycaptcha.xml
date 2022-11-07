@@ -5,7 +5,7 @@
 	<creationDate>2021-10-02</creationDate>
 	<copyright>(C) 2021 SharkyKZ</copyright>
 	<license>GPL-2.0-or-later</license>
-	<version>1.5.2</version>
+	<version>1.6.0</version>
 	<description>PLG_CAPTCHA_FRIENDLYCAPTCHA_XML_DESCRIPTION</description>
 	<files>
 		<filename plugin="friendlycaptcha">friendlycaptcha.php</filename>

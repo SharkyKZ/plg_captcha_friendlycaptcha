@@ -99,4 +99,15 @@
 			<item>Fixed PHP 5.3 compatibility</item>
 		</fix>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.6.0</version>
+		<addition>
+			<item>Added start mode option</item>
+		</addition>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.8</item>
+		</change>
+	</changelog>
 </changelogs>
