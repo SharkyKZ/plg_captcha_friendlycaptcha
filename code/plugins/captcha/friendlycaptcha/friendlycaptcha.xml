@@ -47,6 +47,7 @@
 					name="startMode"
 					type="list"
 					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_LABEL"
+					description="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_START_MODE_DESCRIPTION"
 					default=""
 					validate="options"
 					>
