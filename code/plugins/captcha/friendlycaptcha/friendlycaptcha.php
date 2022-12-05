@@ -88,6 +88,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'hu',
 		'ro',
 		'zh',
+		'zh_tw',
+		'vi',
 	);
 
 	/**
@@ -266,11 +268,15 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		}
 
 		// Use script's built-in language if available.
-		list($languageTag) = explode('-', $this->app->getLanguage()->getTag());
+		$languageTag = strtolower(str_replace('-', '_', $this->app->getLanguage()->getTag()));
+		list($shortLanguageTag) = explode('_', $languageTag);
 
-		if (in_array($languageTag, self::$languages, true))
+		// Use full tag first, fall back to short tag.
+		$languageTags = array($languageTag, $shortLanguageTag);
+
+		if ($foundLanguages = array_intersect($languageTags, self::$languages))
 		{
-			$attributes['data-lang'] = $languageTag;
+			$attributes['data-lang'] = reset($foundLanguages);
 		}
 
 		$attributes = array_map(
