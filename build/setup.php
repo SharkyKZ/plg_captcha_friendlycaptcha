@@ -3,11 +3,6 @@
 
 define('PATH_ROOT', str_replace('\\', '/', dirname(__DIR__)));
 
-if (!is_dir(__DIR__ . '/zips'))
-{
-	mkdir(__DIR__ . '/zips', 0755);
-}
-
 $mediaPath = PATH_ROOT . '/code/media/plg_captcha_friendlycaptcha/js';
 $mediaFiles = [
 	'widget.js',
