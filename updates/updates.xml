@@ -9,14 +9,14 @@
 		<client>site</client>
 		<maintainer>SharkyKZ</maintainer>
 		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
-		<version>1.6.0</version>
+		<version>1.7.0</version>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/download/1.6.0/plg_captcha_friendlycaptcha-1.6.0.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/download/1.7.0/plg_captcha_friendlycaptcha-1.7.0.zip</downloadurl>
 		</downloads>
-		<sha512>8379de2bac26215632db8cdd6f1933fd02e3a0610e609a3e5456891e9dd51d19adf4531201aecaa8014a1f1551d442ad1842c269014415a191ed8482d5c1db74</sha512>
-		<sha384>150ad2bc755039c0094a2f4da661474f44275672650e89e1a95c99bfc63cd438094b7cb7e523e6fe6d7e8e9db5ab0946</sha384>
-		<sha256>f68c360f1cb9a8022dc30344096c0a7c57e926cf991e0fb3d9c60690520745e6</sha256>
-		<infourl title="Captcha - Friendly Captcha">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/tag/1.6.0</infourl>
+		<sha512>4c23e0c5e133bc7fe55a447420a72493181c2615de82ee2701a8710d7d7e88748ace748cff47b5a2d9daac76ce9b2e256fe19c4dece6b98e4b2a192f113c6b0d</sha512>
+		<sha384>0ab53f23ab277290a967f857fb1ae4d47e892f24a17e670ba51a6882ad7617d5ccaf7002babd9e7221301d9858bc1d2a</sha384>
+		<sha256>245dc24221fc411644ff66d737feeba4b8be1b9c06bc32eb0782477e5f2f55ef</sha256>
+		<infourl title="Captcha - Friendly Captcha">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/tag/1.7.0</infourl>
 		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
 		<targetplatform name="joomla" version="(4\.|3\.([89]|10))"/>
 		<php_minimum>5.3.10</php_minimum>

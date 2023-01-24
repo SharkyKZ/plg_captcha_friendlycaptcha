@@ -110,4 +110,18 @@
 			<item>Updated friendly-challenge script to 0.9.8</item>
 		</change>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.7.0</version>
+		<addition>
+			<item>Added native Chinese (Traditional) and Vietnamese language support</item>
+		</addition>
+		<fix>
+			<item>Fixed PHP deprecation notice when site key is not set</item>
+		</fix>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.10</item>
+		</change>
+	</changelog>
 </changelogs>
