@@ -12,7 +12,7 @@ require (dirname(__DIR__)) . '/build-script/script.php';
 		'SharkyKZ',
 		'Captcha - Friendly Captcha',
 		'Friendly Captcha anti-spam plugin.',
-		'(4\.|3\.([89]|10))',
+		'(5\.|4\.|3\.([89]|10))',
 		'5.3.10',
 	)
 )->build();

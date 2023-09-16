@@ -72,7 +72,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.1
 	 */
-	private $joomlaUnsupported = '5.0';
+	private $joomlaUnsupported = '6.0';
 
 	/**
 	 * Minimum supported PHP version.
