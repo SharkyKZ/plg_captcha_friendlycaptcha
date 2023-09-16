@@ -9,8 +9,8 @@ Register at https://friendlycaptcha.com to get your site and secret keys.
 - Supports Dedicated EU Endpoint (requires Advanced or Enterprise plan) with global endpoint as fallback.
 
 ## System Requirements
-- Joomla! 3.8 or higher (4.2 is supported);
-- PHP 5.3.10 or higher (8.2 is supported);
+- Joomla! 3.8 or higher (5.x is supported);
+- PHP 5.3.10 or higher (8.3 is supported);
 - OpenSSL with TLS 1.2 support.
 - One of the following HTTP transports in PHP: cURL, `fsockopen()` or `fopen()` with `allow_url_fopen` option enabled.
 

@@ -124,4 +124,14 @@
 			<item>Updated friendly-challenge script to 0.9.10</item>
 		</change>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.7.1</version>
+		<change>
+			<item>Updated friendly-challenge script to 0.9.13</item>
+			<item>Declared PHP 8.3 support</item>
+			<item>Declared Joomla! 5.0 support</item>
+		</change>
+	</changelog>
 </changelogs>
