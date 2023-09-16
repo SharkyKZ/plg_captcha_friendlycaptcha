@@ -269,10 +269,12 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 
 		// Use script's built-in language if available.
 		$languageTag = strtolower(str_replace('-', '_', $this->app->getLanguage()->getTag()));
-		list($shortLanguageTag) = explode('_', $languageTag);
 
 		// Use full tag first, fall back to short tag.
-		$languageTags = array($languageTag, $shortLanguageTag);
+		$languageTags = array(
+			$languageTag,
+			strstr($languageTag, '_', true),
+		);
 
 		if ($foundLanguages = array_intersect($languageTags, self::$languages))
 		{
