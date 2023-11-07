@@ -120,6 +120,9 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 */
 	public function onCheckAnswer($code = null)
 	{
+		$language = $this->app->getLanguage();
+		$language->load('plg_captcha_friendlycaptcha', JPATH_ADMINISTRATOR);
+
 		if ($code === null || $code === '')
 		{
 			// No answer provided, form was manipulated.
@@ -197,9 +200,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		{
 			if (JDEBUG)
 			{
-				$this->loadLanguage();
-
-				throw new RuntimeException($this->app->getLanguage()->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_INVALID_RESPONSE'));
+				throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_INVALID_RESPONSE'));
 			}
 
 			return !$this->params->get('strictMode');
@@ -212,9 +213,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			{
 				if ($errors = array_intersect($body->errors, self::$errorCodes))
 				{
-					$this->loadLanguage();
-
-					throw new RuntimeException($this->app->getLanguage()->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper(reset($errors))));
+					throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper(reset($errors))));
 				}
 			}
 
@@ -237,7 +236,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 */
 	public function onDisplay($name = null, $id = null, $class = '')
 	{
-		$this->loadLanguage();
+		$language = $this->app->getLanguage();
+		$language->load('plg_captcha_friendlycaptcha', JPATH_ADMINISTRATOR);
 
 		$attributes = array(
 			'data-sitekey' => $this->params->get('siteKey', ''),
@@ -270,7 +270,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		}
 
 		// Use script's built-in language if available.
-		$languageTag = strtolower(str_replace('-', '_', $this->app->getLanguage()->getTag()));
+		$languageTag = strtolower(str_replace('-', '_', $language->getTag()));
 
 		// Use full tag first, fall back to short tag.
 		$languageTags = array(
