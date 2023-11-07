@@ -134,4 +134,15 @@
 			<item>Declared Joomla! 5.0 support</item>
 		</change>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.8.0</version>
+		<addition>
+			<item>Updated friendly-challenge to 0.9.14 which adds Hebrew and Thai widget languages</item>
+		</addition>
+		<change>
+			<item>Improved error messages</item>
+		</change>
+	</changelog>
 </changelogs>
