@@ -90,6 +90,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'zh',
 		'zh_tw',
 		'vi',
+		'he',
+		'th',
 	);
 
 	/**
