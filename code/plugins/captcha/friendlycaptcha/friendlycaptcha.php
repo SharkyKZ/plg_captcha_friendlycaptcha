@@ -338,13 +338,27 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/' . $moduleFilename,
 				array(),
-				array('type' => 'module', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes[$moduleFilename])
+				array(
+					'type' => 'module',
+					'async' => true,
+					'defer' => true,
+					'crossorigin' => 'anonymous',
+					'referrerpolicy' => 'no-referrer',
+					'integrity' => self::$sriHashes[$moduleFilename],
+				)
 			);
 
 			$document->addScript(
 				$baseUrl . self::CHALLENGE_VERSION . '/' . $legacyFilename,
 				array(),
-				array('nomodule' => 'true', 'async' => true, 'defer' => true, 'crossorigin' => 'anonymous', 'integrity' => self::$sriHashes[$legacyFilename])
+				array(
+					'nomodule' => 'true',
+					'async' => true,
+					'defer' => true,
+					'crossorigin' => 'anonymous',
+					'referrerpolicy' => 'no-referrer',
+					'integrity' => self::$sriHashes[$legacyFilename],
+				)
 			);
 
 			return true;
