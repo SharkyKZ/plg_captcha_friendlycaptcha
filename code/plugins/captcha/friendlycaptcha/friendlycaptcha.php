@@ -126,22 +126,22 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		if ($code === null || $code === '')
 		{
 			// No answer provided, form was manipulated.
-			return false;
+			throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_EMPTY_RESPONSE'));
 		}
 
 		try
 		{
 			$http = HttpFactory::getHttp();
 		}
-		catch (RuntimeException $exception)
+		// No HTTP transports supported.
+		catch (Exception $exception)
 		{
-			if (JDEBUG)
+			if ($this->params->get('strictMode'))
 			{
-				throw $exception;
+				throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLTYCAPTCHA_ERROR_HTTP_TRANSPORTS'));
 			}
 
-			// No HTTP transports supported.
-			return !$this->params->get('strictMode');
+			return true;
 		}
 
 		$body = null;
@@ -159,18 +159,18 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				$response = $http->post('https://eu-api.friendlycaptcha.eu/api/v1/siteverify', $data);
 				$body = json_decode($response->body);
 			}
+			// Connection or transport error.
 			catch (RuntimeException $exception)
 			{
 				// If fallback endpoint is not used, return early.
 				if (!$this->params->get('euEndpointFallback'))
 				{
-					if (JDEBUG)
+					if ($this->params->get('strictMode'))
 					{
-						throw $exception;
+						throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLTYCAPTCHA_ERROR_HTTP_CONNECTION'));
 					}
 
-					// Connection or transport error.
-					return !$this->params->get('strictMode');
+					return true;
 				}
 			}
 		}
@@ -183,27 +183,27 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				$response = $http->post('https://api.friendlycaptcha.com/api/v1/siteverify', $data);
 				$body = json_decode($response->body);
 			}
+			// Connection or transport error.
 			catch (RuntimeException $exception)
 			{
-				if (JDEBUG)
+				if ($this->params->get('strictMode'))
 				{
-					throw $exception;
+					throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLTYCAPTCHA_ERROR_HTTP_CONNECTION'));
 				}
 
-				// Connection or transport error.
-				return !$this->params->get('strictMode');
+				return true;
 			}
 		}
 
 		// Remote service error.
 		if ($body === null)
 		{
-			if (JDEBUG)
+			if ($this->params->get('strictMode'))
 			{
 				throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_INVALID_RESPONSE'));
 			}
 
-			return !$this->params->get('strictMode');
+			return true;
 		}
 
 		if (!isset($body->success) || $body->success !== true)
@@ -217,7 +217,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				}
 			}
 
-			return false;
+			throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_VERIFICATION_FAILED'));
 		}
 
 		return true;
