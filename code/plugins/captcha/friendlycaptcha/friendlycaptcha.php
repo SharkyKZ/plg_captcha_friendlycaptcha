@@ -340,7 +340,6 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				array(),
 				array(
 					'type' => 'module',
-					'async' => true,
 					'defer' => true,
 					'crossorigin' => 'anonymous',
 					'referrerpolicy' => 'no-referrer',
@@ -353,7 +352,6 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 				array(),
 				array(
 					'nomodule' => 'true',
-					'async' => true,
 					'defer' => true,
 					'crossorigin' => 'anonymous',
 					'referrerpolicy' => 'no-referrer',
@@ -368,13 +366,13 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			'script',
 			'plg_captcha_friendlycaptcha/widget.module.min.js',
 			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
-			array('type' => 'module', 'async' => true, 'defer' => true)
+			array('type' => 'module', 'defer' => true)
 		);
 		HTMLHelper::_(
 			'script',
 			'plg_captcha_friendlycaptcha/' . $legacyFilename,
 			array('relative' => true, 'version' => self::CHALLENGE_VERSION),
-			array('nomodule' => 'true', 'async' => true, 'defer' => true)
+			array('nomodule' => 'true', 'defer' => true)
 		);
 
 		return true;
