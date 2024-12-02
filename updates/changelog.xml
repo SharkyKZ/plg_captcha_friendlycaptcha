@@ -145,4 +145,14 @@
 			<item>Improved error messages</item>
 		</change>
 	</changelog>
+	<changelog>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<version>1.8.1</version>
+		<change>
+			<item>Declared PHP 8.4 support</item>
+			<item>Increased PHP requirement to PHP 5.4</item>
+			<item>Updated friendly-challenge to 0.9.18 which adds Arabic and Korean widget languages</item>
+		</change>
+	</changelog>
 </changelogs>

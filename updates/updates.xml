@@ -21,4 +21,25 @@
 		<targetplatform name="joomla" version="(5\.|4\.|3\.([89]|10))"/>
 		<php_minimum>5.3.10</php_minimum>
 	</update>
+	<update>
+		<name>Captcha - Friendly Captcha</name>
+		<description>Friendly Captcha anti-spam plugin.</description>
+		<element>friendlycaptcha</element>
+		<type>plugin</type>
+		<folder>captcha</folder>
+		<client>site</client>
+		<maintainer>SharkyKZ</maintainer>
+		<maintainerurl>https://github.com/SharkyKZ/plg_captcha_friendlycaptcha</maintainerurl>
+		<version>1.8.1</version>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/download/1.8.1/plg_captcha_friendlycaptcha-1.8.1.zip</downloadurl>
+		</downloads>
+		<sha512>436260c570908e8723f4b2aece693bb33eec5e3dd2a5f8ca0583f767eab6bce8f2f3556324dfec4c8aff644a78ed90da1d36dc60bc707fea285375bee8ebad74</sha512>
+		<sha384>63846265398f1b105d3a3490dcfecd31da9a613c531a047f416f7b8c265bcfc699e6dd25ab1dbed562cdf2eba234cf9c</sha384>
+		<sha256>d74fd5eb73eac10cb47b66262f36df17fe13febbce0e2f97a076b652682366fc</sha256>
+		<infourl title="Captcha - Friendly Captcha">https://github.com/SharkyKZ/plg_captcha_friendlycaptcha/releases/tag/1.8.1</infourl>
+		<changelogurl>https://raw.githubusercontent.com/SharkyKZ/plg_captcha_friendlycaptcha/master/updates/changelog.xml</changelogurl>
+		<targetplatform name="joomla" version="(5\.|4\.|3\.([89]|10))"/>
+		<php_minimum>5.4</php_minimum>
+	</update>
 </updates>

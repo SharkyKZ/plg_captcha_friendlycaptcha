@@ -2,10 +2,10 @@
 <extension type="plugin" group="captcha" method="upgrade">
 	<name>plg_captcha_friendlycaptcha</name>
 	<author>SharkyKZ</author>
-	<creationDate>2021-10-02</creationDate>
+	<creationDate>2024-12-02</creationDate>
 	<copyright>(C) 2021 SharkyKZ</copyright>
 	<license>GPL-2.0-or-later</license>
-	<version>1.8.0</version>
+	<version>1.8.1</version>
 	<description>PLG_CAPTCHA_FRIENDLYCAPTCHA_XML_DESCRIPTION</description>
 	<files>
 		<filename plugin="friendlycaptcha">friendlycaptcha.php</filename>
