@@ -8,6 +8,7 @@ defined('_JEXEC') || exit;
 
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\Version;
 
 /**
  * Plugin installer script.
@@ -80,7 +81,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.1
 	 */
-	private $phpMinimum = '5.3.10';
+	private $phpMinimum = '5.4';
 
 	/**
 	 * Next unsupported PHP version.
@@ -88,7 +89,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.1
 	 */
-	private $phpUnsupported = '8.4';
+	private $phpUnsupported = '8.5';
 
 	/**
 	 * Function called before extension installation/update/removal procedure commences
@@ -112,7 +113,7 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 			return false;
 		}
 
-		if (version_compare(JVERSION, $this->joomlaUnsupported, '>='))
+		if (version_compare(JVERSION, $this->joomlaUnsupported, '>=') && !(new Version)->isInDevelopmentState())
 		{
 			return false;
 		}

@@ -284,7 +284,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		}
 
 		$attributes = array_map(
-			function ($value)
+			static function ($value)
 			{
 				return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 			},
