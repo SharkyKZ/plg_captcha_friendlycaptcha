@@ -16,5 +16,6 @@ require __DIR__ . '/vendor/autoload.php';
 		'Friendly Captcha anti-spam plugin.',
 		'(5\.|4\.|3\.([89]|10))',
 		'5.4',
+		$argv[1] ?? null,
 	)
 )->build();
