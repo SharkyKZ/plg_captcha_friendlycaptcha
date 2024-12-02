@@ -40,12 +40,20 @@ $script = new class(
 
 		foreach ($mediaFiles as $file)
 		{
-			copy($this->rootPath .  '/node_modules/friendly-challenge/' . $file, $jsPath . '/' . $file);
-			$hashes[$file] = base64_encode(hash_file('sha384', $jsPath . '/' . $file, true));
+			$destinationFile = $jsPath . '/' . $file;
+			$sourceFile = $this->rootPath .  '/node_modules/friendly-challenge/' . $file;
+			$sourceHash = hash_file('sha384', $sourceFile, true);
+
+			if (!is_file($destinationFile) || hash_file('sha384', $destinationFile, true) !== $sourceHash)
+			{
+				copy($sourceFile, $destinationFile);
+			}
+
+			$hashes[$file] = base64_encode($sourceHash);
 		}
 
 		$filename = $this->pluginDirectory . '/friendlycaptcha.php';
-		$code = file_get_contents($filename);
+		$sourceCode = file_get_contents($filename);
 		$pattern = '/\'(widget.*\.js)\'\s+=>\s+\'sha384\-(.*)\'/';
 
 		$code = preg_replace_callback(
@@ -54,7 +62,7 @@ $script = new class(
 			{
 				return str_replace($match[2], $hashes[$match[1]], $match[0]);
 			},
-			$code
+			$sourceCode
 		);
 
 		$json = json_decode(file_get_contents($this->rootPath . '/node_modules/friendly-challenge/package.json'));
@@ -62,7 +70,10 @@ $script = new class(
 		preg_match($pattern, $code, $matches);
 		$code = preg_replace($pattern, '${1}' . $json->version . '$3', $code);
 
-		file_put_contents($filename, $code);
+		if ($sourceCode !== $code)
+		{
+			file_put_contents($filename, $code);
+		}
 
 		parent::build();
 	}
