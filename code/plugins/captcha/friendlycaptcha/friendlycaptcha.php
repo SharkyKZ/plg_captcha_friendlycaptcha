@@ -92,6 +92,8 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'vi',
 		'he',
 		'th',
+		'kr',
+		'ar',
 	);
 
 	/**
