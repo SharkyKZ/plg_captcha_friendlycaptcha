@@ -21,6 +21,8 @@ $script = new class(
 {
 	public function build(): void
 	{
+		passthru('npm install');
+
 		$mediaFiles = [
 			'widget.js',
 			'widget.min.js',
