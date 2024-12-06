@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@friendlycaptcha/sdk": "^0.1.11",
     "friendly-challenge": "^0.9.14"
   }
 }

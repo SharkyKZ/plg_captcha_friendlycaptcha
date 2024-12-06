@@ -21,75 +21,33 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 * @var    string
 	 * @since  1.0.0
 	 *
-	 * @deprecated  2.0.0  Visibility will be changed to private.
-	 *
 	 */
-	const PHP_MINIMUM = '5.3.10';
-
-	/**
-	 * Maximum supported PHP version.
-	 *
-	 * @var    string
-	 * @since  1.0.0
-	 *
-	 * @deprecated  2.0.0
-	 *
-	 */
-	const PHP_MAXIMUM_MINOR = '8.0';
-
-	/**
-	 * Minimum supported Joomla! version.
-	 *
-	 * @var    string
-	 * @since  1.0.0
-	 *
-	 * @deprecated  2.0.0  Visibility will be changed to private.
-	 *
-	 */
-	const JOOMLA_MINIMUM = '3.8';
-
-	/**
-	 * Maximum supported Joomla! version.
-	 *
-	 * @var    string
-	 * @since  1.0.0
-	 *
-	 * @deprecated  2.0.0
-	 *
-	 */
-	const JOOMLA_MAXIMUM_MINOR = '4.0';
-
-	/**
-	 * Minimum supported Joomla! version.
-	 *
-	 * @var    string
-	 * @since  1.0.1
-	 */
-	private $joomlaMinimum = '3.8';
-
-	/**
-	 * Next unsupported Joomla! version.
-	 *
-	 * @var    string
-	 * @since  1.0.1
-	 */
-	private $joomlaUnsupported = '6.0';
-
-	/**
-	 * Minimum supported PHP version.
-	 *
-	 * @var    string
-	 * @since  1.0.1
-	 */
-	private $phpMinimum = '5.4';
+	private const PHP_MINIMUM = '7.2';
 
 	/**
 	 * Next unsupported PHP version.
 	 *
 	 * @var    string
-	 * @since  1.0.1
+	 * @since  2.0.0
+	 *
 	 */
-	private $phpUnsupported = '8.5';
+	private const PHP_UNSUPPORTED = '9.0';
+
+	/**
+	 * Minimum supported Joomla! version.
+	 *
+	 * @var    string
+	 * @since  1.0.0
+	 */
+	private const JOOMLA_MINIMUM = '3.8';
+
+	/**
+	 * Next unsupported Joomla! version.
+	 *
+	 * @var    string
+	 * @since  1.0.0
+	 */
+	private const JOOMLA_UNSUPPORTED = '6.0';
 
 	/**
 	 * Function called before extension installation/update/removal procedure commences
@@ -101,33 +59,33 @@ final class PlgCaptchaFriendlyCaptchaInstallerScript
 	 *
 	 * @since   1.0.0
 	 */
-	public function preflight($type, $parent)
+	public function preflight($type, $parent): bool
 	{
 		if ($type === 'uninstall')
 		{
 			return true;
 		}
 
-		if (version_compare(JVERSION, $this->joomlaMinimum, '<'))
+		if (version_compare(JVERSION, self::JOOMLA_MINIMUM, '<'))
 		{
 			return false;
 		}
 
-		if (version_compare(JVERSION, $this->joomlaUnsupported, '>=') && !(new Version)->isInDevelopmentState())
+		if (version_compare(JVERSION, self::JOOMLA_UNSUPPORTED, '>=') && !(new Version)->isInDevelopmentState())
 		{
 			return false;
 		}
 
-		if (version_compare(PHP_VERSION, $this->phpMinimum, '<'))
+		if (version_compare(PHP_VERSION, self::PHP_MINIMUM, '<'))
 		{
-			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_MINIMUM', $this->phpMinimum), Log::WARNING, 'jerror');
+			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_MINIMUM', self::PHP_MINIMUM), Log::WARNING, 'jerror');
 
 			return false;
 		}
 
-		if (version_compare(PHP_VERSION, $this->phpUnsupported, '>='))
+		if (version_compare(PHP_VERSION, self::PHP_UNSUPPORTED, '>='))
 		{
-			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_UNSUPPORTED', $this->phpUnsupported), Log::WARNING, 'jerror');
+			Log::add(Text::sprintf('PLG_CAPTCHA_FRIENDLYCAPTCHA_INSTALL_PHP_UNSUPPORTED', self::PHP_UNSUPPORTED), Log::WARNING, 'jerror');
 
 			return false;
 		}

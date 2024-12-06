@@ -24,6 +24,16 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
+					name="apiVersion"
+					type="list"
+					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_API_VERSION_LABEL"
+					validate="options"
+					required="true"
+					>
+					<option value="v1"></option>
+					<option value="v2"></option>
+				</field>
+				<field
 					name="siteKey"
 					type="text"
 					label="PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_SITE_KEY_LABEL"
@@ -40,8 +50,9 @@
 					default=""
 					validate="options"
 					>
-					<option value="">JDEFAULT</option>
+					<option value="">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_OPTION_LIGHT</option>
 					<option value="dark">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_OPTION_DARK</option>
+					<option value="auto">PLG_CAPTCHA_FRIENDLYCAPTCHA_CONFIG_THEME_OPTION_AUTO</option>
 				</field>
 				<field
 					name="startMode"

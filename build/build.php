@@ -15,7 +15,7 @@ $script = new class(
 	'Captcha - Friendly Captcha',
 	'Friendly Captcha anti-spam plugin.',
 	'(5\.|4\.|3\.([89]|10))',
-	'5.4',
+	'7.2',
 	$argv[1] ?? null,
 ) extends Script
 {
@@ -24,11 +24,19 @@ $script = new class(
 		passthru('npm install');
 
 		$mediaFiles = [
-			'widget.js',
-			'widget.min.js',
-			'widget.module.js',
-			'widget.module.min.js',
-			'widget.polyfilled.min.js',
+			'friendly-challenge' => [
+				'widget.js',
+				'widget.min.js',
+				'widget.module.js',
+				'widget.module.min.js',
+				'widget.polyfilled.min.js',
+			],
+			'@friendlycaptcha/sdk' => [
+				'site.js',
+				'site.min.js',
+				'site.compat.js',
+				'site.compat.min.js',
+			],
 		];
 
 		$jsPath = $this->mediaDirectory . '/js';
@@ -40,23 +48,26 @@ $script = new class(
 
 		$hashes = [];
 
-		foreach ($mediaFiles as $file)
+		foreach ($mediaFiles as $directory => $files)
 		{
-			$destinationFile = $jsPath . '/' . $file;
-			$sourceFile = $this->rootPath .  '/node_modules/friendly-challenge/' . $file;
-			$sourceHash = hash_file('sha384', $sourceFile, true);
-
-			if (!is_file($destinationFile) || hash_file('sha384', $destinationFile, true) !== $sourceHash)
+			foreach ($files as $file)
 			{
-				copy($sourceFile, $destinationFile);
-			}
+				$destinationFile = $jsPath . '/' . $file;
+				$sourceFile = $this->rootPath .  '/node_modules/' . $directory . '/' . $file;
+				$sourceHash = hash_file('sha384', $sourceFile, true);
 
-			$hashes[$file] = base64_encode($sourceHash);
+				if (!is_file($destinationFile) || hash_file('sha384', $destinationFile, true) !== $sourceHash)
+				{
+					copy($sourceFile, $destinationFile);
+				}
+
+				$hashes[$file] = base64_encode($sourceHash);
+			}
 		}
 
 		$filename = $this->pluginDirectory . '/friendlycaptcha.php';
 		$sourceCode = file_get_contents($filename);
-		$pattern = '/\'(widget.*\.js)\'\s+=>\s+\'sha384\-(.*)\'/';
+		$pattern = '/\'([a-z\.]+\.js)\'\s+=>\s+\'sha384\-(.*)\'/';
 
 		$code = preg_replace_callback(
 			$pattern,
@@ -67,10 +78,13 @@ $script = new class(
 			$sourceCode
 		);
 
-		$json = json_decode(file_get_contents($this->rootPath . '/node_modules/friendly-challenge/package.json'));
-		$pattern = '/(const\s+CHALLENGE_VERSION\s+=\s+\')(.*)(\';)/';
-		preg_match($pattern, $code, $matches);
-		$code = preg_replace($pattern, '${1}' . $json->version . '$3', $code);
+		foreach (['friendly-challenge' => 'CHALLENGE_VERSION', '@friendlycaptcha/sdk' => 'SDK_VERSION'] as $directory => $constant)
+		{
+			$json = json_decode(file_get_contents($this->rootPath . '/node_modules/' . $directory . '/package.json'));
+			$pattern = '/(const\s+' . $constant . '\s+=\s+\')(.*)(\';)/';
+			preg_match($pattern, $code, $matches);
+			$code = preg_replace($pattern, '${1}' . $json->version . '$3', $code);
+		}
 
 		if ($sourceCode !== $code)
 		{
