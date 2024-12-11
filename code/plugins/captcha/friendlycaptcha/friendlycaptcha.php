@@ -275,7 +275,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 					}
 				}
 			}
-			elseif(!empty($body->error->error_code))
+			elseif(!empty($body->error->error_code) && is_string($body->error->erro_code))
 			{
 				$languageKey = 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper($body->error->error_code);
 
