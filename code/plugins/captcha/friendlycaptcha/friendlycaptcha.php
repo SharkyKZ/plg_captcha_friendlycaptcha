@@ -68,22 +68,21 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 */
 	private const ERROR_CODES = [
 		// v2
-		'auth_required',
-		'auth_invalid',
-		'sitekey_invalid',
-		'response_missing',
-		'response_invalid',
-		'response_timeout',
-		'response_duplicate',
-		'bad_request',
+		'auth_required' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_AUTH_REQUIRED',
+		'auth_invalid' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_AUTH_INVALID',
+		'sitekey_invalid' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SITEKEY_INVALID',
+		'response_missing' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_RESPONSE_MISSING',
+		'response_invalid' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_RESPONSE_INVALID',
+		'response_timeout' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_RESPONSE_TIMEOUT',
+		'response_duplicate' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_RESPONSE_DUPLICATE',
 		// v1
-		'secret_missing',
-		'secret_invalid',
-		'solution_missing',
-		'solution_invalid',
-		'solution_timeout_or_duplicate',
+		'secret_missing' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SECRET_MISSING',
+		'secret_invalid' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SECRET_INVALID',
+		'solution_missing' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SOLUTION_MISSING',
+		'solution_invalid' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SOLUTION_INVALID',
+		'solution_timeout_or_duplicate' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_SOLUTION_TIMEOUT_OR_DUPLICATE',
 		// v2 and v1
-		'bad_request',
+		'bad_request' => 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_BAD_REQUEST',
 	];
 
 	/**
@@ -260,35 +259,37 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 			return true;
 		}
 
-		if (!isset($body->success) || $body->success !== true)
+		// Check for success condition first.
+		if (isset($body->success) && $body->success === true)
+		{
+			return true;
+		}
+
+		$error = 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_VERIFICATION_FAILED';
+
+		if ($apiVersion === 'v1')
 		{
 			// If error codes are pvovided, use them for language strings.
 			if (!empty($body->errors) && is_array($body->errors))
 			{
-				if ($errors = array_intersect($body->errors, self::ERROR_CODES))
+				foreach ($body->errors as $errorCode)
 				{
-					$languageKey = 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper($errors[array_key_first($errors)]);
-
-					if ($language->hasKey($languageKey))
+					if (isset(self::ERROR_CODES[$errorCode]))
 					{
-						throw new RuntimeException($language->_($languageKey));
+						throw new RuntimeException($language->_(self::ERROR_CODES[$errorCode]));
 					}
 				}
 			}
-			elseif(!empty($body->error->error_code) && is_string($body->error->erro_code))
-			{
-				$languageKey = 'PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_' . strtoupper($body->error->error_code);
 
-				if ($language->hasKey($languageKey))
-				{
-					throw new RuntimeException($language->_($languageKey));
-				}
-			}
-
-			throw new RuntimeException($language->_('PLG_CAPTCHA_FRIENDLYCAPTCHA_ERROR_VERIFICATION_FAILED'));
+			throw new RuntimeException($language->_($error));
 		}
 
-		return true;
+		if (!empty($body->error->error_code) && is_string($body->error->error_code) && isset(self::ERROR_CODES[$body->error->error_code]))
+		{
+			$error = self::ERROR_CODES[$body->error->error_code];
+		}
+
+		throw new RuntimeException($language->_($error));
 	}
 
 	/**
