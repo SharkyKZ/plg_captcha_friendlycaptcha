@@ -33,7 +33,7 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 	 * @var    string
 	 * @since  2.0.0
 	 */
-	private const SDK_VERSION = '0.1.11';
+	private const SDK_VERSION = '0.1.14';
 
 	/**
 	 * Application instance.
@@ -144,10 +144,10 @@ final class PlgCaptchaFriendlyCaptcha extends CMSPlugin
 		'widget.module.js' => 'sha384-HoqNPMPnveXKHVAAzhUNV7cEDnCimiihyM8UK/NeGPrZDlvGEwpPeC9GHR6ybEw2',
 		'widget.module.min.js' => 'sha384-lz4OKju2av+OYhIe9iWjPNIGhEktRtZ5LB5DiJBoQlP8sm/6yE9gzZltQcOy/Jea',
 		'widget.polyfilled.min.js' => 'sha384-o6dGARcN5TQtRkzU1xuPKw5a59ZZRosPNEriWAVeL+nJzM7ADSXH7lvc5fxVeX5M',
-		'site.js' => 'sha384-SQF3BbAihtyvygXqc3LeNHrl8xIClkjwSQTFWIySkF2Naj79oAEkmoXLsAkteiDa',
-		'site.min.js' => 'sha384-wMMeVRh/wgZ+j3R6zaSs2Kid5B7klcKhwRFJQ6kDi2wb8xeB5lTfLQOOJxZvHzZM',
-		'site.compat.js' => 'sha384-u3CJMnBKATQGSkKw21iUB6dggip6VNcJeM8L4AH7ZkC+U58yUjQdK7M9KKTqPOrM',
-		'site.compat.min.js' => 'sha384-vQqAyn0b+6jTGPmhfs3asbnBonFvT1bziGRkUOgBMMrqtz3lXwXI6wGrgg2kW/t/',
+		'site.js' => 'sha384-uqIwDndaIrgoqkXWleQ+a8Bbl26eb/KXTOTcvE5lLfV1AMS9nym7fLrRMTF2EA/M',
+		'site.min.js' => 'sha384-TVj3r2XNHzSiiTSHNcdz6ZKrFGrBgBg4zXceoayLL2R0sgCLL51HrcUlTgfNaFeX',
+		'site.compat.js' => 'sha384-81PV0xLBswEzprKFhhKkiG2nQpQKNqG+TtoQBa9b/tAVR5hh+246bzX0ywJaGvld',
+		'site.compat.min.js' => 'sha384-PSJPiN7mli8MUWFT3QJegs1aoTi5rB9IKvs2muTeykBeS5e4QS3wOjtYh3zUEBXW',
 	];
 
 	/**
